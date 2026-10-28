@@ -1,0 +1,10 @@
+# Simulink models to build — one model name per non-comment line.
+#
+# The build_codegen.m driver calls `slbuild(model)` for each entry.
+# Make sure each model's active configuration set is set to an Embedded
+# Coder target with C++ output (see codegen/simulink/README.md).
+#
+# Examples:
+#   levitation_controller
+#   brake_supervisor
+

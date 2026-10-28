@@ -1,0 +1,10 @@
+# MATLAB Coder entry points — one per non-comment line.
+#
+# The build_codegen.m driver walks this file and invokes
+# `coder -config codercfg <entry>` for each entry. The codercfg.m in this
+# folder must exist before building (copy from codercfg.m.example).
+#
+# Examples:
+#   foo_entry
+#   bar_entry
+

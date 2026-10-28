@@ -1,0 +1,32 @@
+function cfg = codercfg()
+%CODERCFG  Example MATLAB Coder configuration for this project.
+%
+%   Copy this file to 'codercfg.m', uncomment / adjust the lines that
+%   matter for your toolchain, then build with:
+%
+%       coder -config codercfg foo_entry
+%
+%   See https://mathworks.com/help/coder/ref/coder.config.html
+
+cfg = coder.config('lib');          % or 'dll', 'exe'
+cfg.TargetLang = 'C++';
+cfg.GenerateExampleMain = 'DoNotGenerate';
+
+% --- Hardware target --------------------------------------------------
+% cfg.HardwareImplementation.ProdHWDeviceType = 'Intel->x86-64 (Linux)';
+% cfg.HardwareImplementation.ProdLongLongMode = true;
+
+% --- Safety / MISRA ---------------------------------------------------
+% cfg.CodeStyle = 'MISRA-CPP:2008';    % requires Polyspace license
+% cfg.SoftwareTags.Enabled = true;
+
+% --- Reporting --------------------------------------------------------
+% cfg.GenerateReport = true;
+% cfg.ReportPotentialDifferences = false;
+
+% --- Custom code / toolchain ------------------------------------------
+% cfg.CustomSource = 'extra.cpp';
+% cfg.CustomInclude = {'/opt/vendor/include'};
+% cfg.CustomLibrary = {'vendor_runtime'};
+% cfg.CustomLibraryIncludePaths = {'/opt/vendor/lib'};
+end
