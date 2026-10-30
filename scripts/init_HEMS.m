@@ -74,3 +74,30 @@ Tpos = feedback(Lpos,1);
 max(real(pole(Tpos)))     % debe ser < 0
 allmargin(Lpos)           % el margen de ganancia inferior sale ≈ 1.3
 
+%% ===== ESTUDIO TÉRMICO =====
+
+% --- Parámetros que cambian en cada escenario ---
+T_init     = 25;     % ºC   temperatura inicial de la bobina (y de los imanes)
+thermal_on = 0;      %      0 = T fija en T_init ; 1 = la bobina se calienta
+k_acc      = 1;      %      aceleración del tiempo térmico (1 = tiempo real)
+G_cool     = 0;      % W/K  refrigeración (0 = sin enfriamiento, peor caso)
+beta_Br    = 0;      % 1/K  pérdida de fuerza del imán (típico NdFeB: -1.1e-3)
+beta_ki    = 0;      % 1/K  pérdida de eficacia de la bobina (peor caso: igual a beta_Br)
+F_load     = 0;      % N    carga extra que se aplica en t_load
+t_load     = 6;      % s
+t_step     = 3;      % s    instante del escalón de referencia (antes era 1)
+t_sim      = 8;      % s    duración de la simulación (antes 5)
+
+% --- Parámetros físicos fijos ---
+alpha_cu  = 3.9e-3;  % 1/K  coeficiente de temperatura del cobre
+T_ref_R   = 25;      % ºC   temperatura a la que R_coil = 1.28 ohm
+T_ref_mag = 25;      % ºC   temperatura de referencia de los imanes
+T_amb     = 25;      % ºC   ambiente (solo actúa si G_cool > 0)
+S_cu = 1.55e-6; rho_cu = 1.71e-8; d_cu = 8900; cp_cu = 380;   % datos del conductor
+l_wire = R_coil*S_cu/rho_cu;   % m   (≈ 116 m)
+m_coil = d_cu*S_cu*l_wire;     % kg  (≈ 1.6 kg)
+C_th   = m_coil*cp_cu;         % J/K (≈ 608)
+T_lim_coil = 155;  T_lim_mag = 80;   % ºC  límites térmicos provisionales
+
+% --- Parte del imán de la tabla de fuerza (fila de corriente 0) ---
+Fz_I0 = Fz_table(current_bp==0, :);   % 1x27, mismo eje que airgap_bp
