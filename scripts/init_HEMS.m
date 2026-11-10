@@ -1,7 +1,7 @@
 %% =========================================================
 % HEMS - BANCADA DE LEVITACIÓN 1 GDL V2  (HYPERLOOP UPV)
 
-clearvars; clc;
+
 
 %% Planta
 g0 = 9.81;  m = 62.5;
